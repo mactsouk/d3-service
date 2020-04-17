@@ -3,21 +3,10 @@ import Websocket from 'ws';
 import { Subject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
-const username = 'admin';
-const password = 'admin';
+const username = 'service';
+const token = '7e0d0345-815d-4357-9d3d-db7296c6a8ab';
 
-const authenticationUrl = 'http://localhost:3030/api/login';
 const topicDataUrl = 'ws://localhost:3030/api/ws/v2/sql/execute';
-
-async function authenticationRequest() {
-  const AuthenticateWith = await axios.post(authenticationUrl, {
-    user: username,
-    password
-  })
-    .then(response => response.data)
-    .catch((error) => console.error('Error:', error));
-  return AuthenticateWith;
-}
 
 const webSocketRequest = new WebSocket(topicDataUrl);
 var websocketData = new Array;
@@ -25,7 +14,7 @@ const websocketSubject = new Subject();
 
 // We are waiting for the authentication token
 async function requestToWSEndpoint() {
-  const reqToken = await authenticationRequest();
+  const reqToken = username.concat(':', token);;
 
   websocketData = [];
 
