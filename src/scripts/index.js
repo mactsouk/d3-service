@@ -5,7 +5,6 @@ import { finalize } from 'rxjs/operators';
 
 const username = 'service';
 const token = '7e0d0345-815d-4357-9d3d-db7296c6a8ab';
-
 const topicDataUrl = 'ws://localhost:3030/api/ws/v2/sql/execute';
 
 const webSocketRequest = new WebSocket(topicDataUrl);
@@ -29,7 +28,7 @@ async function requestToWSEndpoint() {
 
   // We open the Websocket
   webSocketRequest.onopen = () => {
-    // Here, we send the message
+    // Here, we send the message with the query and the credentials
     webSocketRequest.send(JSON.stringify(firstMessage));
 
     // Here, the onmessage() method is executed each time we receive a message
@@ -102,4 +101,3 @@ async function requestToWSEndpoint() {
   
   })).subscribe();
 }());
-
