@@ -3,19 +3,26 @@
 
 <style>
 body {
-  background-color: #763636;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: 0;
-  overflow: hidden;
+  font: 11px sans-serif;
 }
 
-.bar { fill: green; }
-.bar:hover {fill: orange;}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
 
+.dot {
+  stroke: #000;
+}
+
+.tooltip {
+  position: absolute;
+  width: 200px;
+  height: 28px;
+  pointer-events: none;
+}
 </style>
 
 <head>
@@ -27,7 +34,7 @@ body {
   <h2>Visualizing live data from Lenses via Websocket Endpoint using D3.js!</h2>
   <h2>Using a Lenses Service Account.</h2>
   <div id="my_dataviz"></div>
-<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3.v3.js"></script>
 </body>
 </html>
 
